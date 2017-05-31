@@ -18,9 +18,14 @@ def load_data(file_path):
     :param file_path: File Path
     :return: numpy array data
     """
-    data = pandas.read_csv(file_path)
+    data = pandas.read_csv(file_path, parse_dates=['timestamp'])
 
     return data
+
+
+def save_data(data, file_name):
+    data.to_csv('../files/' + file_name, index=False)
+
 
 def data_splitting(data_features, data_targets, test_size):
     """

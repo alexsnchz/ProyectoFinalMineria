@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     utils.logger("TRANSFORMING NOMINAL DATA WITH NUMERICAL")
 
-    # Conver data to numerical
+    # Transform data to numerical
     for i in range(len(numpy_data[0])):
         temp = numpy_data[:, i]
         dict = numpy.unique(numpy_data[:, i])
@@ -126,7 +126,11 @@ if __name__ == '__main__':
     test_temp = test_dataset[:, 1:-1]
 
     # Data normalization
+    # Z Score Normalization
     data_features_normalized = normalization.z_score_normalization(feature_vector)
+
+    # Min Max Normalization
+    # data_features_normalized = normalization.min_max_normalization(feature_vector)
 
     # Data splitting
     data_features_train, data_features_test, data_targets_train, data_targets_test = utils.data_splitting(

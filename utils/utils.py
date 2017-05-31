@@ -41,7 +41,7 @@ def data_splitting(data_features, data_targets, test_size):
     return data_features_train, data_features_test, data_targets_train, data_targets_test
 
 
-def convert_data_to_numeric(data, columns_to_convert):
+def convert_data_to_numeric(data):
     """
     This function convert a nominal representation to number to use the data with
     sklearn algorithms
@@ -53,12 +53,11 @@ def convert_data_to_numeric(data, columns_to_convert):
 
     for i in range(len(numpy_data[0])):
         temp = numpy_data[:, i]
-        if i in columns_to_convert:
-            dict = numpy.unique(numpy_data[:, i])
-            for j in range(len(dict)):
-                temp[numpy.where(numpy_data[:, i] == dict[j])] = j
+        dict = numpy.unique(numpy_data[:, i])
+        for j in range(len(dict)):
+            temp[numpy.where(numpy_data[:, i] == dict[j])] = j
 
-            numpy_data[:, i] = temp
+        numpy_data[:, i] = temp
 
     return numpy_data
 
